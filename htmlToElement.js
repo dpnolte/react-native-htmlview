@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import htmlparser from "htmlparser2-without-node-native";
 import entities from "entities";
 
@@ -38,6 +38,8 @@ const Img = props => {
   return <AutoSizedImage source={source} style={imgStyle} />;
 };
 
+const whiteSpaceOrNewLineRegex = /[\S|\n|\r|\t]+/;
+
 export default function htmlToElement(rawHtml, customOpts = {}, done) {
   const opts = {
     ...defaultOpts,
@@ -49,7 +51,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
   if (opts.styles) {
     Object.keys(opts.styles).forEach(styleName => {
       let splitName = styleName.split(">");
-      if (splitName.length > 0) {
+      if (splitName.length === 2) {
         const [parentNodeName, childNodeName] = splitName;
         nestedStyles[childNodeName] = {
           [parentNodeName]: styleName
@@ -57,7 +59,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
       }
 
       splitName = styleName.split("<");
-      if (splitName.length > 0) {
+      if (splitName.length === 2) {
         const [parentNodeName, childNodeName] = splitName;
         parentStyles[parentNodeName] = {
           [childNodeName]: styleName
@@ -73,21 +75,27 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
 
     return dom.map((node, index, list) => {
       try {
+        const parentAndNestedStyles = getParentAndNestedStyles(
+          node,
+          parentStyles,
+          nestedStyles,
+          opts
+        );
         const inheritedStyle = getInheritedStyle(
           node,
-          parentInheritedStyle,
-          parentStyles,
-          nestedStyles
+          parentAndNestedStyles.length > 0
+            ? parentInheritedStyle.concat(parentAndNestedStyles)
+            : parentInheritedStyle,
+          opts
         );
         if (renderNode) {
-          result = renderNode(
+          const rendered = renderNode(
             node,
             index,
             list,
             parent,
             (nextNode, nextParent) =>
               domToElement(nextNode, nextParent, inheritedStyle), // defaultRenderer,
-            nodePath,
             inheritedStyle
           );
           if (rendered || rendered === null) {
@@ -102,6 +110,11 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
             opts.textComponentProps && opts.textComponentProps.style
               ? [opts.textComponentProps.style, ...inheritedStyle]
               : inheritedStyle;
+
+          // don't convert empty texts
+          if (style.length === 0 && whiteSpaceOrNewLineRegex.test(node.data)) {
+            return null;
+          }
 
           return (
             <TextComponent
@@ -182,12 +195,21 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
 
           const { NodeComponent, styles } = opts;
 
+          const nodeStyle = node.parent ? [styles[node.name]] : [];
+          if (parentAndNestedStyles.length > 0) {
+            nodeStyle.push(...parentAndNestedStyles);
+          }
+
+          if (nodeStyle.length === 0 && node.children.length === 0) {
+            return null;
+          }
+
           return (
             <NodeComponent
               {...opts.nodeComponentProps}
               key={index}
               onPress={linkPressHandler}
-              style={!node.parent ? styles[node.name] : undefined}
+              style={nodeStyle.length > 0 ? nodeStyle : undefined}
               onLongPress={linkLongPressHandler}
             >
               {linebreakBefore}
@@ -198,7 +220,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
           );
         }
       } catch (err) {
-        return null;
+        throw err;
       }
     });
   }
@@ -212,12 +234,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
   parser.done();
 }
 
-function getInheritedStyle(
-  node,
-  parentInheritedStyle,
-  parentStyles,
-  nestedStyles
-) {
+function getInheritedStyle(node, parentInheritedStyle, opts) {
   if (!node || !node.name) {
     return [];
   }
@@ -226,21 +243,31 @@ function getInheritedStyle(
   if (opts.styles[node.name]) {
     inheritedStyle.push(opts.styles[node.name]);
   }
+
+  return inheritedStyle;
+}
+
+function getParentAndNestedStyles(node, parentStyles, nestedStyles, opts) {
+  if (!node || !node.name) {
+    return [];
+  }
+
+  const styles = [];
   if (parentStyles[node.name]) {
     // check if it has children of nested style
     node.children.forEach(child => {
       if (node.type === "tag") {
         const styleForParentName = parentStyles[node.name][child.name];
         if (styleForParentName) {
-          inheritedStyle.push(opts.styles[styleForParentName]);
+          styles.push(opts.styles[styleForParentName]);
         }
       }
     });
   }
   if (nestedStyles[node.name] && nestedStyles[node.name][node.parent.name]) {
     const styleForChildName = nestedStyles[node.name][node.parent.name];
-    inheritedStyle.push(opts.styles[styleForChildName]);
+    styles.push(opts.styles[styleForChildName]);
   }
 
-  return inheritedStyle;
+  return styles;
 }
