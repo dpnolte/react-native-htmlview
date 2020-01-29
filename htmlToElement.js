@@ -73,29 +73,12 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
 
     return dom.map((node, index, list) => {
       try {
-        const inheritedStyle = [...parentInheritedStyle];
-        if (opts.styles[node.name]) {
-          inheritedStyle.push(opts.styles[node.name]);
-        }
-        if (parentStyles[node.name]) {
-          // check if it has children of nested style
-          node.children.forEach(child => {
-            if (node.type === "tag") {
-              const styleForParentName = parentStyles[node.name][child.name];
-              if (styleForParentName) {
-                inheritedStyle.push(opts.styles[styleForParentName]);
-              }
-            }
-          });
-        }
-        if (
-          nestedStyles[node.name] &&
-          nestedStyles[node.name][node.parent.name]
-        ) {
-          const styleForChildName = nestedStyles[node.name][node.parent.name];
-          inheritedStyle.push(opts.styles[styleForChildName]);
-        }
-
+        const inheritedStyle = getInheritedStyle(
+          node,
+          parentInheritedStyle,
+          parentStyles,
+          nestedStyles
+        );
         if (renderNode) {
           result = renderNode(
             node,
@@ -104,6 +87,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
             parent,
             (nextNode, nextParent) =>
               domToElement(nextNode, nextParent, inheritedStyle), // defaultRenderer,
+            nodePath,
             inheritedStyle
           );
           if (rendered || rendered === null) {
@@ -226,4 +210,37 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
   const parser = new htmlparser.Parser(handler);
   parser.write(rawHtml);
   parser.done();
+}
+
+function getInheritedStyle(
+  node,
+  parentInheritedStyle,
+  parentStyles,
+  nestedStyles
+) {
+  if (!node || !node.name) {
+    return [];
+  }
+
+  const inheritedStyle = [...parentInheritedStyle];
+  if (opts.styles[node.name]) {
+    inheritedStyle.push(opts.styles[node.name]);
+  }
+  if (parentStyles[node.name]) {
+    // check if it has children of nested style
+    node.children.forEach(child => {
+      if (node.type === "tag") {
+        const styleForParentName = parentStyles[node.name][child.name];
+        if (styleForParentName) {
+          inheritedStyle.push(opts.styles[styleForParentName]);
+        }
+      }
+    });
+  }
+  if (nestedStyles[node.name] && nestedStyles[node.name][node.parent.name]) {
+    const styleForChildName = nestedStyles[node.name][node.parent.name];
+    inheritedStyle.push(opts.styles[styleForChildName]);
+  }
+
+  return inheritedStyle;
 }
