@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import htmlparser from "htmlparser2-without-node-native";
 import entities from "entities";
 
@@ -37,8 +37,6 @@ const Img = props => {
   };
   return <AutoSizedImage source={source} style={imgStyle} />;
 };
-
-const whiteSpaceOrNewLineRegex = /[\S|\n|\r|\t]+/;
 
 export default function htmlToElement(rawHtml, customOpts = {}, done) {
   const opts = {
@@ -106,13 +104,15 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
         const { TextComponent } = opts;
 
         if (node.type === "text") {
+          if (!node.data) return null;
+
           const style =
             opts.textComponentProps && opts.textComponentProps.style
               ? [opts.textComponentProps.style, ...inheritedStyle]
               : inheritedStyle;
 
-          // don't convert empty texts
-          if (style.length === 0 && whiteSpaceOrNewLineRegex.test(node.data)) {
+          // don't render empty texts
+          if (style.length === 0 && node.data.trim().length === 0) {
             return null;
           }
 
@@ -169,11 +169,15 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
           }
 
           let listItemPrefix = null;
+          let canPropogateStyle =
+            !linkPressHandler && !linkPressHandler && !linebreakAfter;
           if (node.name === "li") {
             const style =
               opts.textComponentProps && opts.textComponentProps.style
                 ? [opts.textComponentProps.style, ...inheritedStyle]
                 : inheritedStyle;
+
+            canPropogateStyle = false;
 
             if (parent.name === "ol") {
               listItemPrefix = (
@@ -196,8 +200,8 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
           const { NodeComponent, styles } = opts;
 
           const nodeStyle = node.parent ? [styles[node.name]] : [];
-          if (parentAndNestedStyles.length > 0) {
-            nodeStyle.push(...parentAndNestedStyles);
+          if (inheritedStyle.length > 0) {
+            nodeStyle.push(...inheritedStyle);
           }
 
           if (nodeStyle.length === 0 && node.children.length === 0) {
@@ -214,7 +218,10 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
             >
               {linebreakBefore}
               {listItemPrefix}
-              {domToElement(node.children, node, inheritedStyle)}
+              {domToElement(node.children, node, [
+                ...inheritedStyle,
+                ...parentAndNestedStyles
+              ])}
               {linebreakAfter}
             </NodeComponent>
           );
@@ -236,7 +243,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
 
 function getInheritedStyle(node, parentInheritedStyle, opts) {
   if (!node || !node.name) {
-    return [];
+    return parentInheritedStyle;
   }
 
   const inheritedStyle = [...parentInheritedStyle];

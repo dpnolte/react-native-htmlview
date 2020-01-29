@@ -55,6 +55,9 @@ exports[`<HTMLView/> should handle additional text nodes between list items 1`] 
       <Text>
         1. 
       </Text>
+      <Text>
+         a 
+      </Text>
       
 
     </Text>
@@ -67,6 +70,9 @@ exports[`<HTMLView/> should handle additional text nodes between list items 1`] 
     >
       <Text>
         2. 
+      </Text>
+      <Text>
+         b 
       </Text>
       
 
@@ -85,9 +91,26 @@ exports[`<HTMLView/> should not render extra linebreaks if configured not to 1`]
             "fontSize": 30,
             "fontWeight": "500",
           },
+          Object {
+            "fontSize": 30,
+            "fontWeight": "500",
+          },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 30,
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        Dwayne’s only companion at night was a Labrador retriever named Sparky.
+      </Text>
+    </Text>
     <Text
       style={
         Array [
@@ -95,6 +118,10 @@ exports[`<HTMLView/> should not render extra linebreaks if configured not to 1`]
         ]
       }
     >
+      <Text>
+        
+        Sparky could not wag his tail-because of an automobile accident many years ago, so he had no way of telling other dogs how friendly he was.
+      </Text>
       <Text
         style={
           Array [
@@ -102,6 +129,11 @@ exports[`<HTMLView/> should not render extra linebreaks if configured not to 1`]
           ]
         }
       />
+      <Text>
+        
+        He opened the door of the cage, something Bill couldn’t have done in a thousand years. Bill flew over to a windowsill.
+        
+      </Text>
     </Text>
   </Text>
 </View>
@@ -120,6 +152,9 @@ exports[`<HTMLView/> should not render extra linebreaks in list items if configu
       <Text>
         • 
       </Text>
+      <Text>
+         a 
+      </Text>
     </Text>
     <Text
       style={
@@ -130,6 +165,9 @@ exports[`<HTMLView/> should not render extra linebreaks in list items if configu
     >
       <Text>
         • 
+      </Text>
+      <Text>
+         b 
       </Text>
     </Text>
   </Text>
@@ -147,9 +185,26 @@ exports[`<HTMLView/> should render a <Text/> element 1`] = `
             "color": "#007AFF",
             "fontWeight": "500",
           },
+          Object {
+            "color": "#007AFF",
+            "fontWeight": "500",
+          },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        &hearts nice job!
+      </Text>
+    </Text>
   </Text>
 </View>
 `;
@@ -198,10 +253,35 @@ exports[`<HTMLView/> should render an <Image />, with default width/height of 1 
 
 exports[`<HTMLView/> should render inherited styles correctly 1`] = `
 <View>
-  <Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
     <Text
       style={
         Array [
+          Object {
+            "color": "red",
+          },
+        ]
+      }
+    >
+      RED
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "blue",
+          },
+          Object {
+            "color": "red",
+          },
           Object {
             "color": "blue",
           },
@@ -212,11 +292,52 @@ exports[`<HTMLView/> should render inherited styles correctly 1`] = `
         style={
           Array [
             Object {
+              "color": "red",
+            },
+            Object {
+              "color": "blue",
+            },
+          ]
+        }
+      >
+        BLUE
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "green",
+            },
+            Object {
+              "color": "red",
+            },
+            Object {
+              "color": "blue",
+            },
+            Object {
               "color": "green",
             },
           ]
         }
-      />
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "red",
+              },
+              Object {
+                "color": "blue",
+              },
+              Object {
+                "color": "green",
+              },
+            ]
+          }
+        >
+          GREEN
+        </Text>
+      </Text>
     </Text>
   </Text>
 </View>
@@ -236,9 +357,32 @@ exports[`<HTMLView/> should render nested styles correctly 1`] = `
           Object {
             "margin": 10,
           },
+          Object {
+            "color": "#007AFF",
+            "fontWeight": "500",
+          },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+            Object {
+              "margin": 10,
+            },
+          ]
+        }
+      >
+        child selected style
+      </Text>
+    </Text>
   </Text>
 </View>
 `;
@@ -256,6 +400,9 @@ exports[`<HTMLView/> should render ol numbers 1`] = `
       <Text>
         1. 
       </Text>
+      <Text>
+         a 
+      </Text>
       
 
     </Text>
@@ -268,6 +415,9 @@ exports[`<HTMLView/> should render ol numbers 1`] = `
     >
       <Text>
         2. 
+      </Text>
+      <Text>
+         b 
       </Text>
     </Text>
   </Text>
@@ -289,11 +439,68 @@ exports[`<HTMLView/> should render parent selected styles correctly 1`] = `
       style={
         Array [
           Object {
+            "margin": 10,
+          },
+          Object {
+            "margin": 10,
+          },
+        ]
+      }
+    >
+      
+    
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "fontWeight": "500",
+          },
+          Object {
+            "margin": 10,
+          },
+          Object {
+            "margin": 10,
+          },
+          Object {
             "fontWeight": "500",
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        Test
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "margin": 10,
+          },
+          Object {
+            "margin": 10,
+          },
+        ]
+      }
+    >
+      
+    
+    </Text>
     <Text
       onPress={[Function]}
       style={
@@ -302,9 +509,53 @@ exports[`<HTMLView/> should render parent selected styles correctly 1`] = `
             "color": "#007AFF",
             "fontWeight": "500",
           },
+          Object {
+            "margin": 10,
+          },
+          Object {
+            "margin": 10,
+          },
+          Object {
+            "color": "#007AFF",
+            "fontWeight": "500",
+          },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        parent selected style
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "margin": 10,
+          },
+          Object {
+            "margin": 10,
+          },
+        ]
+      }
+    >
+      
+    
+    </Text>
   </Text>
 </View>
 `;
@@ -326,9 +577,25 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
               "fontSize": 30,
               "fontWeight": "500",
             },
+            Object {
+              "fontSize": 30,
+              "fontWeight": "500",
+            },
           ]
         }
       >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 30,
+                "fontWeight": "500",
+              },
+            ]
+          }
+        >
+          &gt; Dwayne’s only companion at night was a Labrador retriever named Sparky.
+        </Text>
         
 
       </Text>
@@ -345,6 +612,9 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
               Object {
                 "fontStyle": "italic",
               },
+              Object {
+                "fontStyle": "italic",
+              },
             ]
           }
         >
@@ -352,11 +622,46 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
             style={
               Array [
                 Object {
+                  "fontStyle": "italic",
+                },
+              ]
+            }
+          >
+            Sparky could not wag his tail-because of an automobile accident many years ago, so he had no way of telling other dogs how friendly he was.
+        He opened the door of the cage, something Bill couldn’t have done in a thousand years. Bill flew over to a windowsill.
+        
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontWeight": "500",
+                },
+                Object {
+                  "fontStyle": "italic",
+                },
+                Object {
                   "fontWeight": "500",
                 },
               ]
             }
-          />
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontStyle": "italic",
+                  },
+                  Object {
+                    "fontWeight": "500",
+                  },
+                ]
+              }
+            >
+              The undippable flag was a beauty, and the anthem and the vacant motto might not have mattered much, if it weren’t for this: a lot of citizens were so ignored and cheated and insulted that they thought they might be in the wrong country, or even on the wrong planet, that some terrible mistake had been made.
+        
+            </Text>
+          </Text>
         </Text>
         
 
@@ -369,6 +674,10 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
           ]
         }
       >
+        <Text>
+          
+          [1] 
+        </Text>
         <Text
           onPress={[Function]}
           style={
@@ -377,9 +686,26 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
                 "color": "#007AFF",
                 "fontWeight": "500",
               },
+              Object {
+                "color": "#007AFF",
+                "fontWeight": "500",
+              },
             ]
           }
-        />
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#007AFF",
+                  "fontWeight": "500",
+                },
+              ]
+            }
+          >
+            https://code.facebook.com/posts/1505962329687926/flow-a-new-...
+          </Text>
+        </Text>
         
 
 
@@ -389,7 +715,13 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
 </View>
 `;
 
-exports[`<HTMLView/> should render text in a (nested) <Text/> element 1`] = `<View />`;
+exports[`<HTMLView/> should render text in a (nested) <Text/> element 1`] = `
+<View>
+  <Text>
+    This is some text
+  </Text>
+</View>
+`;
 
 exports[`<HTMLView/> should render ul bullets 1`] = `
 <View>
@@ -404,6 +736,9 @@ exports[`<HTMLView/> should render ul bullets 1`] = `
       <Text>
         • 
       </Text>
+      <Text>
+         a 
+      </Text>
       
 
     </Text>
@@ -416,6 +751,9 @@ exports[`<HTMLView/> should render ul bullets 1`] = `
     >
       <Text>
         • 
+      </Text>
+      <Text>
+         b 
       </Text>
     </Text>
   </Text>
