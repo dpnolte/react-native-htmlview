@@ -104,7 +104,6 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
             parent,
             (nextNode, nextParent) =>
               domToElement(nextNode, nextParent, inheritedStyle), // defaultRenderer,
-            nodePath,
             inheritedStyle
           );
           if (rendered || rendered === null) {
