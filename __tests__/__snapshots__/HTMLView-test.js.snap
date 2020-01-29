@@ -3,58 +3,21 @@
 exports[`<HTMLView/> can use a custom node class 1`] = `
 <View>
   <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-      
-  </Text>
-  <Text
-    onLongPress={null}
-    onPress={null}
     selectable={false}
   >
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
         
     </Text>
     <Text
-      onLongPress={null}
-      onPress={null}
       selectable={false}
-      style={null}
     >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
         
       
       </Text>
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
     
     </Text>
@@ -62,105 +25,26 @@ exports[`<HTMLView/> can use a custom node class 1`] = `
 </View>
 `;
 
-exports[`<HTMLView/> can use a custom renderer 1`] = `
-<View>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-      
-  </Text>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
-      
-        
-    </Text>
-    <Text />
-  </Text>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-    
-  </Text>
-</View>
-`;
+exports[`<HTMLView/> can use a custom renderer 1`] = `<View />`;
 
 exports[`<HTMLView/> can use custom node props 1`] = `
 <View>
   <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-      
-  </Text>
-  <Text
-    onLongPress={null}
-    onPress={null}
     selectable={false}
   >
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
         
     </Text>
     <Text
-      onLongPress={null}
-      onPress={null}
       selectable={false}
-      style={null}
     >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
         
       
       </Text>
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
     
     </Text>
@@ -170,96 +54,36 @@ exports[`<HTMLView/> can use custom node props 1`] = `
 
 exports[`<HTMLView/> should handle additional text nodes between list items 1`] = `
 <View>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+  <Text>
+    <Text>
       
       
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         1. 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          a 
       </Text>
       
 
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
       
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         2. 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          b 
       </Text>
       
 
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
     
     </Text>
@@ -269,41 +93,19 @@ exports[`<HTMLView/> should handle additional text nodes between list items 1`] 
 
 exports[`<HTMLView/> should not render extra linebreaks if configured not to 1`] = `
 <View>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-      
-  </Text>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+  <Text>
+    <Text>
       
           
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
+    <Text>
       <Text
         style={
           Array [
-            null,
+            Object {
+              "fontSize": 30,
+              "fontWeight": "500",
+            },
             Object {
               "fontSize": 30,
               "fontWeight": "500",
@@ -314,132 +116,46 @@ exports[`<HTMLView/> should not render extra linebreaks if configured not to 1`]
         Dwayne’s only companion at night was a Labrador retriever named Sparky.
       </Text>
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
         
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         
         Sparky could not wag his tail-because of an automobile accident many years ago, so he had no way of telling other dogs how friendly he was.
       </Text>
-      <Text
-        onLongPress={null}
-        onPress={null}
-        style={null}
-      />
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text />
+      <Text>
         
         He opened the door of the cage, something Bill couldn’t have done in a thousand years. Bill flew over to a windowsill.
         
       </Text>
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
       
     </Text>
-  </Text>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-    
   </Text>
 </View>
 `;
 
 exports[`<HTMLView/> should not render extra linebreaks in list items if configured not to 1`] = `
 <View>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+  <Text>
+    <Text>
+      <Text>
         • 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          a 
       </Text>
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         • 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          b 
       </Text>
     </Text>
@@ -449,19 +165,17 @@ exports[`<HTMLView/> should not render extra linebreaks in list items if configu
 
 exports[`<HTMLView/> should render a <Text/> element 1`] = `
 <View>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
+  <Text>
     <Text
-      onLongPress={null}
       onPress={[Function]}
-      style={null}
     >
       <Text
         style={
           Array [
-            null,
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
             Object {
               "color": "#007AFF",
               "fontWeight": "500",
@@ -521,8 +235,6 @@ exports[`<HTMLView/> should render an <Image />, with default width/height of 1 
 exports[`<HTMLView/> should render inherited styles correctly 1`] = `
 <View>
   <Text
-    onLongPress={null}
-    onPress={null}
     style={
       Object {
         "color": "red",
@@ -532,7 +244,9 @@ exports[`<HTMLView/> should render inherited styles correctly 1`] = `
     <Text
       style={
         Array [
-          null,
+          Object {
+            "color": "red",
+          },
           Object {
             "color": "red",
           },
@@ -541,15 +255,19 @@ exports[`<HTMLView/> should render inherited styles correctly 1`] = `
     >
       RED
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
+    <Text>
       <Text
         style={
           Array [
-            null,
+            Object {
+              "color": "red",
+            },
+            Object {
+              "color": "red",
+            },
+            Object {
+              "color": "blue",
+            },
             Object {
               "color": "blue",
             },
@@ -558,15 +276,25 @@ exports[`<HTMLView/> should render inherited styles correctly 1`] = `
       >
         BLUE
       </Text>
-      <Text
-        onLongPress={null}
-        onPress={null}
-        style={null}
-      >
+      <Text>
         <Text
           style={
             Array [
-              null,
+              Object {
+                "color": "red",
+              },
+              Object {
+                "color": "red",
+              },
+              Object {
+                "color": "blue",
+              },
+              Object {
+                "color": "blue",
+              },
+              Object {
+                "color": "green",
+              },
               Object {
                 "color": "green",
               },
@@ -581,63 +309,62 @@ exports[`<HTMLView/> should render inherited styles correctly 1`] = `
 </View>
 `;
 
-exports[`<HTMLView/> should render ol numbers 1`] = `
+exports[`<HTMLView/> should render nested styles correctly 1`] = `
 <View>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
+  <Text>
+    <Text>
+      
+    
+    </Text>
     <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
+      onPress={[Function]}
     >
       <Text
         style={
           Array [
-            null,
-            Object {},
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+            Object {
+              "margin": 10,
+            },
           ]
         }
       >
+        child selected style
+      </Text>
+    </Text>
+    <Text>
+      
+    
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<HTMLView/> should render ol numbers 1`] = `
+<View>
+  <Text>
+    <Text>
+      <Text>
         1. 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          a 
       </Text>
       
 
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         2. 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          b 
       </Text>
     </Text>
@@ -645,59 +372,111 @@ exports[`<HTMLView/> should render ol numbers 1`] = `
 </View>
 `;
 
-exports[`<HTMLView/> should render shoddy html including headings, links, bold, italic 1`] = `
+exports[`<HTMLView/> should render parent selected styles correctly 1`] = `
 <View>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-      
-  </Text>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
+  <Text>
     <Text
       style={
         Array [
-          null,
-          Object {},
+          Object {
+            "margin": 10,
+          },
         ]
       }
     >
       
-        
+    
+    </Text>
+    <Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "fontWeight": "500",
+            },
+            Object {
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        Test
+      </Text>
     </Text>
     <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
+      style={
+        Array [
+          Object {
+            "margin": 10,
+          },
+        ]
+      }
+    >
+      
+    
+    </Text>
+    <Text
+      onPress={[Function]}
     >
       <Text
         style={
           Array [
-            null,
-            Object {},
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
+            Object {
+              "color": "#007AFF",
+              "fontWeight": "500",
+            },
           ]
         }
       >
+        parent selected style
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "margin": 10,
+          },
+        ]
+      }
+    >
+      
+    
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<HTMLView/> should render shoddy html including headings, links, bold, italic 1`] = `
+<View>
+  <Text>
+    <Text>
+      
+        
+    </Text>
+    <Text>
+      <Text>
         
           
       </Text>
-      <Text
-        onLongPress={null}
-        onPress={null}
-        style={null}
-      >
+      <Text>
         <Text
           style={
             Array [
-              null,
+              Object {
+                "fontSize": 30,
+                "fontWeight": "500",
+              },
               Object {
                 "fontSize": 30,
                 "fontWeight": "500",
@@ -710,42 +489,22 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
         
 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
         
         
       </Text>
-      <Text
-        onLongPress={null}
-        onPress={null}
-        style={null}
-      >
-        <Text
-          style={
-            Array [
-              null,
-              Object {},
-            ]
-          }
-        >
+      <Text>
+        <Text>
           
         
         </Text>
-        <Text
-          onLongPress={null}
-          onPress={null}
-          style={null}
-        >
+        <Text>
           <Text
             style={
               Array [
-                null,
+                Object {
+                  "fontStyle": "italic",
+                },
                 Object {
                   "fontStyle": "italic",
                 },
@@ -756,17 +515,20 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
         He opened the door of the cage, something Bill couldn’t have done in a thousand years. Bill flew over to a windowsill.
         
           </Text>
-          <Text
-            onLongPress={null}
-            onPress={null}
-            style={null}
-          >
+          <Text>
             <Text
               style={
                 Array [
-                  null,
                   Object {
                     "fontStyle": "italic",
+                  },
+                  Object {
+                    "fontStyle": "italic",
+                  },
+                  Object {
+                    "fontWeight": "500",
+                  },
+                  Object {
                     "fontWeight": "500",
                   },
                 ]
@@ -781,42 +543,25 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
 
 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
         
         
       </Text>
-      <Text
-        onLongPress={null}
-        onPress={null}
-        style={null}
-      >
-        <Text
-          style={
-            Array [
-              null,
-              Object {},
-            ]
-          }
-        >
+      <Text>
+        <Text>
           
           [1] 
         </Text>
         <Text
-          onLongPress={null}
           onPress={[Function]}
-          style={null}
         >
           <Text
             style={
               Array [
-                null,
+                Object {
+                  "color": "#007AFF",
+                  "fontWeight": "500",
+                },
                 Object {
                   "color": "#007AFF",
                   "fontWeight": "500",
@@ -827,14 +572,7 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
             https://code.facebook.com/posts/1505962329687926/flow-a-new-...
           </Text>
         </Text>
-        <Text
-          style={
-            Array [
-              null,
-              Object {},
-            ]
-          }
-        >
+        <Text>
           
         
         </Text>
@@ -842,116 +580,39 @@ exports[`<HTMLView/> should render shoddy html including headings, links, bold, 
 
 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
         
       
       </Text>
     </Text>
-    <Text
-      style={
-        Array [
-          null,
-          Object {},
-        ]
-      }
-    >
+    <Text>
       
     
     </Text>
   </Text>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    
-    
-  </Text>
 </View>
 `;
 
-exports[`<HTMLView/> should render text in a (nested) <Text/> element 1`] = `
-<View>
-  <Text
-    style={
-      Array [
-        null,
-        null,
-      ]
-    }
-  >
-    This is some text
-  </Text>
-</View>
-`;
+exports[`<HTMLView/> should render text in a (nested) <Text/> element 1`] = `<View />`;
 
 exports[`<HTMLView/> should render ul bullets 1`] = `
 <View>
-  <Text
-    onLongPress={null}
-    onPress={null}
-  >
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+  <Text>
+    <Text>
+      <Text>
         • 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          a 
       </Text>
       
 
     </Text>
-    <Text
-      onLongPress={null}
-      onPress={null}
-      style={null}
-    >
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+    <Text>
+      <Text>
         • 
       </Text>
-      <Text
-        style={
-          Array [
-            null,
-            Object {},
-          ]
-        }
-      >
+      <Text>
          b 
       </Text>
     </Text>

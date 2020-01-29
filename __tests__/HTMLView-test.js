@@ -193,4 +193,45 @@ describe('<HTMLView/>', () => {
         .toJSON()
     ).toMatchSnapshot();
   });
+
+  it('should render nested styles correctly', () => {
+    const htmlContent = `
+    <div>
+    <a href="https://github.com/jsdf/react-native-htmlview">child selected style</a>
+    </div>
+    `;
+
+    const stylesheet = StyleSheet.create({
+      'div>a': {
+        margin: 10,
+      },
+    });
+
+    expect(
+      renderer
+        .create(<HTMLView value={htmlContent} stylesheet={stylesheet} />)
+        .toJSON()
+    ).toMatchSnapshot();
+  });
+
+  it('should render parent selected styles correctly', () => {
+    const htmlContent = `
+    <div>
+    <strong>Test</strong>
+    <a href="https://github.com/jsdf/react-native-htmlview">parent selected style</a>
+    </div>
+    `;
+
+    const stylesheet = StyleSheet.create({
+      'div<strong': {
+        margin: 10,
+      },
+    });
+
+    expect(
+      renderer
+        .create(<HTMLView value={htmlContent} stylesheet={stylesheet} />)
+        .toJSON()
+    ).toMatchSnapshot();
+  });
 });
